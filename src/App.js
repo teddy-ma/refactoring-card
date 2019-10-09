@@ -1,82 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
+import About from './About';
+import ReactModal from 'react-modal';
+import data from './data';
+
 import './App.css';
 
 function App() {
-  const cards = [
-    "change-function-declaration",
-    "change-reference-to-value",
-    "change-value-to-reference",
-    "collapse-hierarchy",
-    "combine-functions-into-class",
-    "combine-functions-into-transform",
-    "consolidate-conditional-expression",
-    "decompose-conditional",
-    "encapsulate-collection",
-    "encapsulate-record",
-    "encapsulate-variable",
-    "extract-class",
-    "extract-funcation",
-    "extract-superclass",
-    "extract-variable",
-    "hide-delegate",
-    "inline-class",
-    "inline-function",
-    "inline-variable",
-    "introduce-assertion",
-    "introduce-parameter-object",
-    "introduce-special-case",
-    "move-field",
-    "move-function",
-    "move-statements-into-function",
-    "move-statements-to-callers",
-    "parameterize-function",
-    "preserve-whole-object",
-    "pull-up-constructor-body",
-    "pull-up-field",
-    "pull-up-method",
-    "push-down-field",
-    "push-down-method",
-    "remove-dead-code",
-    "remove-flag-argument",
-    "remove-middle-man",
-    "remove-setting-method",
-    "remove-subclass",
-    "rename-field",
-    "rename-variable",
-    "replace-command-with-function",
-    "replace-conditional-with-polymorphism",
-    "replace-constructor-with-factory-function",
-    "replace-control-flag-with-break",
-    "replace-derived-variable-with-query",
-    "replace-error-code-with-exception",
-    "replace-exception-with-precheck",
-    "replace-function-with-command",
-    "replace-inline-code-with-function-call",
-    "replace-loop-with-pipeline",
-    "replace-magic-literal",
-    "replace-nested-conditional-with-guard-clauses",
-    "replace-parameter-with-query",
-    "replace-primitive-with-object",
-    "replace-query-with-parameter",
-    "replace-subclass-with-delegate",
-    "replace-superclass-with-delegate",
-    "replace-temp-with-query",
-    "replace-type-code-with-subclasses",
-    "return-modified-value",
-    "separate-query-from-modifier",
-    "slide-statements",
-    "split-loop",
-    "split-phase",
-    "split-variable",
-  ]
+  const [show, setShow] = useState(false);
 
+  const handleOpenModal = () => {
+    setShow(true);
+  };
+
+  const handleCloseModal = () => {
+    setShow(false);
+  };
 
   return (
-    <div className="App">
-        {cards.map((card) => (
-          <Card key={card} name={card} />
+    <div>
+      <h1> Refactoring Card </h1>
+      <a href="https://github.com/teddy-ma/refactoring-card"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+      <div className="row small-up-2 medium-up-3 large-up-4">
+        {Object.keys(data).map((name) => (
+          <Card key={name} name={name} page={data[name]} />
         ))}
+      </div>
+      <hr />
+      <About />
     </div>
   );
 }
